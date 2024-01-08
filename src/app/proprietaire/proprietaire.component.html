@@ -1,0 +1,38 @@
+<h3 class="ms-5 p-3 text-center">Proprietaires Management</h3>
+<div class="p-5">
+  <form class="form" (ngSubmit) = "ngSubmit()">
+    <input type="text" class="form-control w-50 "
+     name="nom" placeholder="Nom" [(ngModel)] = "proprietaires.nom">
+
+     <input type="text" class="form-control w-50 mt-3"
+     name="prenom" placeholder="Prenom" [(ngModel)] = "proprietaires.prenom">
+
+     <input type="text" class="form-control w-50 mt-3"
+     name="cin" placeholder="CIN" [(ngModel)] = "proprietaires.cin">
+
+     <button type="submit" class="btn btn-outline-success mt-3">Add</button>
+  </form>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Cin</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let proprietaires of proprietaire">
+    <td>{{proprietaires.id}}</td>
+    <td>{{proprietaires.nom}}</td>
+    <td>{{proprietaires.prenom}}</td>
+    <td>{{proprietaires.cin}}</td>
+    <td>
+<button  (click) = "deleteCategorie(proprietaires.id)" class="btn btn-outline-danger me-2">Delete</button>
+<button  (click) = "updateProprietaire(proprietaires.id)"  class="btn btn-outline-secondary">Update</button>
+    </td>
+  </tr>
+</table>
+
