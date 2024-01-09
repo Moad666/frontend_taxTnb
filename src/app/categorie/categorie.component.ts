@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Categorie } from '../categorie';
 import { CategorieService } from '../categorie.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categorie',
@@ -25,8 +26,16 @@ export class CategorieComponent implements OnInit{
   }
   createCategorie(){
     this.categorieService.createCategorie(this.categories).subscribe(data=>{
-      console.log(data);
-      window.location.reload();
+      Swal.fire({
+        icon: 'success',
+    title: 'Category Add Successfully!',
+    showConfirmButton: true,
+    confirmButtonText: 'OK'
+      }).then((result)=>{
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
     });
       }
       ngSubmit(){
@@ -35,8 +44,16 @@ export class CategorieComponent implements OnInit{
 
       deleteCategorie(id : number|undefined){
         this.categorieService.deleteCategorie(id).subscribe(data =>{ // pour ecouter les emissions d'observable
-          console.log(data);
-          window.location.reload();
+          Swal.fire({
+            icon: 'success',
+        title: 'Category Deleted Successfully!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+          }).then((result)=>{
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
         });
       }
       updateCategorie(id : number | undefined){

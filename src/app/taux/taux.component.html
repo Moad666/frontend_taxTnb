@@ -1,0 +1,38 @@
+<h3 class="ms-5 p-3 text-center">Taux Management</h3>
+<div class="p-5">
+  <form class="form" (ngSubmit) = "onSubmit()">
+    <input type="number" class="form-control w-50" min="1"
+      name="montant" placeholder="Montant" [(ngModel)]="tauxs.montant">
+
+    <label class="mt-3" style="color: gray;">Categories</label>
+    <select class="form-select w-50" [(ngModel)]="tauxs.categorie" name="categories">
+      <option value="" disabled selected>Select a categorie</option>
+      <option *ngFor="let cat of categorie" [ngValue]="cat">{{ cat.id }} - {{ cat.type }}</option>
+    </select>
+
+    <button type="submit" class="btn btn-outline-success mt-3">Add</button>
+  </form>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Categorie</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let tauxs of taux">
+    <td>{{tauxs.id}}</td>
+    <td>{{tauxs.categorie?.type}}</td>
+    <td>{{tauxs.montant}}</td>
+    <td>
+<button (click)="deleteTaux(tauxs.id)" class="btn btn-outline-danger me-2">Delete</button>
+<button (click)="updateTaux(tauxs.id)" class="btn btn-outline-secondary">Update</button>
+    </td>
+  </tr>
+</table>
+

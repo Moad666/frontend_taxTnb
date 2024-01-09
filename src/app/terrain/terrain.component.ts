@@ -122,4 +122,8 @@ export class TerrainComponent implements OnInit{
   ngSubmit(){
         this.createTerrain();
       }
+
+      updateTerrain(id : number | undefined){
+        this.router.navigate(['update-terrain', id]);
+          }
 }

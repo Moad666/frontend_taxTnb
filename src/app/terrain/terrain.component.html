@@ -35,17 +35,11 @@
   <tr *ngFor = "let terrains of terrain">
     <td>{{terrains.id}}</td>
     <td>{{terrains.mc}}</td>
-    <td>
-      <span *ngFor="let terrains of terrain">
-        {{ terrains.proprietaire?.nom }}
-        <div class="ml-2"></div>
-      </span>    </td>
-    <td>
-      <span *ngFor="let terrains of terrain">{{ terrains.categorie?.type}} <div class="ml-2"></div></span>
-    </td>
+    <td>{{ terrains.proprietaire?.nom }}</td>
+    <td>{{ terrains.categorie?.type }}</td>
     <td>
 <button (click) = "deleteTerrain(terrains.id)" class="btn btn-outline-danger me-2">Delete</button>
-<button class="btn btn-outline-secondary">Update</button>
+<button (click)="updateTerrain(terrains.id)" class="btn btn-outline-secondary">Update</button>
     </td>
   </tr>
 </table>

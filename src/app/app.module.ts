@@ -11,6 +11,9 @@ import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 import { UpdateProprietaireComponent } from './update-proprietaire/update-proprietaire.component';
 import { TerrainComponent } from './terrain/terrain.component';
 import { UpdateTerrainComponent } from './update-terrain/update-terrain.component';
+import { TauxComponent } from './taux/taux.component';
+import { UpdateTauxComponent } from './update-taux/update-taux.component';
+import { TaxetnbComponent } from './taxetnb/taxetnb.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { UpdateTerrainComponent } from './update-terrain/update-terrain.componen
     UpdateProprietaireComponent,
     TerrainComponent,
     UpdateTerrainComponent,
+    TauxComponent,
+    UpdateTauxComponent,
+    TaxetnbComponent,
 
   ],
   imports: [

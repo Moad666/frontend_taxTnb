@@ -42,4 +42,8 @@ export class TerrainService {
       return this.httpClient.delete(`${this.baseUrl}/daleteById/${id}`);
       }
 
+      updateTerrain(id:number|undefined, terrain : Terrain): Observable<Object>{
+        return this.httpClient.put(`${this.baseUrl}/update/${id}`,terrain);
+        }
+
 }

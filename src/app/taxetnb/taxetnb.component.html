@@ -1,0 +1,33 @@
+<h3 class="ms-5 p-3 text-center">Taxes Management</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Montant</th>
+      <th scope="col">TnbYear</th>
+      <th scope="col">Description</th>
+      <th scope="col">Label</th>
+      <th scope="col">Categorie</th>
+      <th scope="col">Proprietaire</th>
+      <th scope="col">Surface</th>
+      <th scope="col">Taux</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let taxes of taxe">
+    <td>{{taxes.id}}</td>
+    <td>{{taxes.montantbase}}</td>
+    <td>{{taxes.tnbyear}}</td>
+    <td>{{taxes.description}}</td>
+    <td>{{taxes.label}}</td>
+    <td>{{taxes.categorie?.type}}</td>
+    <td>{{taxes.proprietaire?.nom}}</td>
+    <td>{{taxes.terrain?.mc}}</td>
+    <td>{{taxes.taux?.montant}}</td>
+    <td>
+<button (click)="deleteTaxe(taxes.id)"  class="btn btn-outline-danger me-2">Delete</button>
+<button  class="btn btn-outline-secondary">Update</button>
+    </td>
+  </tr>
+</table>

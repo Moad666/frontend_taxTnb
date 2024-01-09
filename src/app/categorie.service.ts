@@ -24,7 +24,6 @@ export class CategorieService {
 
       updateCategorie(id:number|undefined, categorie : Categorie): Observable<Object>{
         return this.httpClient.put(`${this.baseUrl}/update/${id}`,categorie);
-
         }
 
         getCategorieById(id : number |undefined): Observable<Categorie>{
