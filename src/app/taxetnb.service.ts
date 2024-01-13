@@ -23,4 +23,8 @@ export class TaxetnbService {
     deleteTaxe(id:number | undefined) : Observable<Object>{
       return this.httpClient.delete(`${this.baseUrl}/delete/${id}`);
       }
+
+      createTaux(taxetnb : Taxetnb): Observable<Object>{
+        return this.httpClient.post(`${this.baseUrl}/save`, taxetnb);
+      }
 }

@@ -81,5 +81,41 @@ export class TaxetnbComponent implements OnInit{
     });
   }
 
+  calculateMontant(): void {
+    if (this.taxes.taux && this.taxes.terrain && this.taxes.taux.montant !== undefined && this.taxes.terrain.mc !== undefined) {
+      this.taxes.montantbase = this.taxes.taux.montant * this.taxes.terrain.mc;
+    }
+  }
+  onSubmit(): void {
+    this.calculateMontant(); // Call the calculateMontant method before saving
+    this.taxetnbService.createTaux(this.taxes).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+      title: 'Taxe Created Successfully!',
+      showConfirmButton: true,
+      confirmButtonText: 'OK'
+        }).then((result)=>{
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+      title: 'Taxe not created!',
+      showConfirmButton: true,
+      confirmButtonText: 'OK'
+        }).then((result)=>{
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+      }
+    );
+  }
+
+
 
 }

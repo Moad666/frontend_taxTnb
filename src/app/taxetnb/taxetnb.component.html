@@ -1,4 +1,59 @@
 <h3 class="ms-5 p-3 text-center">Taxes Management</h3>
+<div class="p-5">
+  <form class="form" (ngSubmit) = "onSubmit()">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label style="color: gray;">Surface</label>
+        <select id="select1" class="form-select" [(ngModel)]="taxes.terrain" name="terrain">
+          <option value="" disabled selected>Select a surface</option>
+          <option *ngFor="let ter of terrain" [ngValue]="ter">{{ ter.id }} - {{ ter.mc }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="taxes.description">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label style="color: gray;">Categories</label>
+        <select class="form-select" [(ngModel)]="taxes.categorie" name="categorie">
+          <option value="" disabled selected>Select a category</option>
+          <option *ngFor="let cat of categorie" [ngValue]="cat">{{ cat.id }} - {{ cat.type }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="label" placeholder="Label" [(ngModel)]="taxes.label">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label style="color: gray;">Owner</label>
+        <select id="select1" class="form-select" [(ngModel)]="taxes.proprietaire" name="proprietaire">
+          <option value="" disabled selected>Select an owner</option>
+          <option *ngFor="let prop of proprietaire" [ngValue]="prop">{{ prop.id }} - {{ prop.cin }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <input type="number" class="form-control" name="tnbyear" placeholder="Tnb Year" min="1" [(ngModel)]="taxes.tnbyear">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label style="color: gray;">Taux</label>
+        <select id="select1" class="form-select" [(ngModel)]="taxes.taux" name="taux">
+          <option value="" disabled selected>Select a rate</option>
+          <option *ngFor="let tau of taux" [ngValue]="tau">{{ tau.id }} - {{ tau.montant }}</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success mt-3">Add</button>
+  </form>
+</div>
+
 <table class="table">
   <thead>
     <tr>

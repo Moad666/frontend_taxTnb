@@ -46,4 +46,8 @@ export class TerrainService {
         return this.httpClient.put(`${this.baseUrl}/update/${id}`,terrain);
         }
 
+        searchTerrainByProprietaireCin(cin: String): Observable<any> {
+          return this.httpClient.get(`${this.baseUrl}/findByProprietaireCIN/${cin}`);
+        }
+
 }

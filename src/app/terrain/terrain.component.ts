@@ -20,8 +20,36 @@ export class TerrainComponent implements OnInit{
   categorie : Categorie[] | undefined;
   proprietaire : Proprietaire[] | undefined;
   proprietaires : Proprietaire = new Proprietaire();
+  terrainsSearch: any[] = [];
+  cinToSearch: string = '';
+  showAllData: boolean = true;
+
 
   constructor(private categorieService : CategorieService,private proprietaireService : ProprietaireService,private terrainService : TerrainService, private router : Router){}
+
+  searchTerrainByCin(): void {
+    const cinToSearch = this.cinToSearch.trim();
+
+    if (cinToSearch !== "") {
+      console.log('CIN to search:', cinToSearch);
+
+      this.terrainService.searchTerrainByProprietaireCin(cinToSearch).subscribe(
+        (response) => {
+          this.terrainsSearch = response;
+          this.showAllData = false;
+          console.log('Search Result:', response);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('Error: CinToSearch is null or an empty string');
+    }
+  }
+
+
+
 
   private getProprietaires(){
     this.proprietaireService.getProprietairesList().subscribe(data => {
