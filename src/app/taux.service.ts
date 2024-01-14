@@ -32,6 +32,10 @@ export class TauxService {
         return this.httpClient.put(`${this.baseUrl}/update/${id}`,taux);
         }
 
+        searchTauxByCategorieType(type: String): Observable<any> {
+          return this.httpClient.get(`${this.baseUrl}/findByCategorieType/${type}`);
+        }
+
 
 
 

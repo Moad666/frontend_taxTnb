@@ -25,6 +25,9 @@ export class TaxetnbComponent implements OnInit{
   proprietaire : Proprietaire[] | undefined;
   terrain : Terrain[] | undefined;
   taux : Taux[] | undefined;
+  cinToSearch: string = '';
+  showAllData: boolean = true;
+  taxesSearch: any[] = [];
 
   constructor(private tauxService : TauxService, private router : Router,
     private categorieService : CategorieService, private proprietaireService : ProprietaireService,
@@ -116,6 +119,25 @@ export class TaxetnbComponent implements OnInit{
     );
   }
 
+  searchTaxeTnbByCin(): void {
+    const cinToSearch = this.cinToSearch.trim();
 
+    if (cinToSearch !== "") {
+      console.log('CIN to search:', cinToSearch);
+
+      this.taxetnbService.searchTaxeTnbByProprietaireCin(cinToSearch).subscribe(
+        (response) => {
+          this.taxesSearch = response;
+          this.showAllData = false;
+          console.log('Search Result:', response);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('Error: CinToSearch is null or an empty string');
+    }
+  }
 
 }

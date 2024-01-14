@@ -19,6 +19,31 @@ export class TauxComponent implements OnInit{
     taux : Taux[] | undefined;
     tauxs : Taux = new Taux();
     categorie : Categorie[] | undefined;
+    cinToSearch: string = '';
+    showAllData: boolean = true;
+    tauxSearch: any[] = [];
+
+
+    searchTauxByType(): void {
+      const cinToSearch = this.cinToSearch.trim();
+
+      if (cinToSearch !== "") {
+        console.log('CIN to search:', cinToSearch);
+
+        this.tauxService.searchTauxByCategorieType(cinToSearch).subscribe(
+          (response) => {
+            this.tauxSearch = response;
+            this.showAllData = false;
+            console.log('Search Result:', response);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      } else {
+        console.error('Error: CinToSearch is null or an empty string');
+      }
+    }
 
 
     private getCategories(){

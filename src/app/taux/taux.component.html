@@ -12,6 +12,10 @@
 
     <button type="submit" class="btn btn-outline-success mt-3">Add</button>
   </form>
+  <div class="d-flex">
+    <input type="text" class="form-control mt-3 w-50" placeholder="Search Terrain By Categorie" [(ngModel)]="cinToSearch">
+    <button class="btn btn-outline-info mt-2 ms-2" (click)="searchTauxByType()"><i class="bi bi-search"></i></button>
+</div>
 </div>
 
 
@@ -25,6 +29,8 @@
     </tr>
   </thead>
   <tbody>
+
+    <ng-container *ngIf="showAllData; else searchResults">
   <tr *ngFor = "let tauxs of taux">
     <td>{{tauxs.id}}</td>
     <td>{{tauxs.categorie?.type}}</td>
@@ -34,5 +40,18 @@
 <button (click)="updateTaux(tauxs.id)" class="btn btn-outline-secondary">Update</button>
     </td>
   </tr>
+</ng-container>
+<ng-template #searchResults>
+  <tr *ngFor = "let tauxs of tauxSearch">
+    <td>{{tauxs.id}}</td>
+    <td>{{tauxs.categorie?.type}}</td>
+    <td>{{tauxs.montant}}</td>
+    <td>
+<button (click)="deleteTaux(tauxs.id)" class="btn btn-outline-danger me-2">Delete</button>
+<button (click)="updateTaux(tauxs.id)" class="btn btn-outline-secondary">Update</button>
+    </td>
+  </tr>
+
+</ng-template>
 </table>
 

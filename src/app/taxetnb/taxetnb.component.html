@@ -52,6 +52,10 @@
 
     <button type="submit" class="btn btn-outline-success mt-3">Add</button>
   </form>
+  <div class="d-flex">
+    <input type="text" class="form-control mt-3 w-50" placeholder="Search Tnb By Cin" [(ngModel)]="cinToSearch">
+    <button class="btn btn-outline-info mt-2 ms-2" (click)="searchTaxeTnbByCin()"><i class="bi bi-search"></i></button>
+</div>
 </div>
 
 <table class="table">
@@ -63,13 +67,14 @@
       <th scope="col">Description</th>
       <th scope="col">Label</th>
       <th scope="col">Categorie</th>
-      <th scope="col">Proprietaire</th>
+      <th scope="col">Owner</th>
       <th scope="col">Surface</th>
       <th scope="col">Taux</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
+    <ng-container *ngIf="showAllData; else searchResults">
   <tr *ngFor = "let taxes of taxe">
     <td>{{taxes.id}}</td>
     <td>{{taxes.montantbase}}</td>
@@ -77,7 +82,7 @@
     <td>{{taxes.description}}</td>
     <td>{{taxes.label}}</td>
     <td>{{taxes.categorie?.type}}</td>
-    <td>{{taxes.proprietaire?.nom}}</td>
+    <td>{{taxes.proprietaire?.cin}}</td>
     <td>{{taxes.terrain?.mc}}</td>
     <td>{{taxes.taux?.montant}}</td>
     <td>
@@ -85,4 +90,22 @@
 <button  class="btn btn-outline-secondary">Update</button>
     </td>
   </tr>
+</ng-container>
+<ng-template #searchResults>
+  <tr *ngFor = "let taxes of taxesSearch">
+    <td>{{taxes.id}}</td>
+    <td>{{taxes.montantbase}}</td>
+    <td>{{taxes.tnbyear}}</td>
+    <td>{{taxes.description}}</td>
+    <td>{{taxes.label}}</td>
+    <td>{{taxes.categorie?.type}}</td>
+    <td>{{taxes.proprietaire?.cin}}</td>
+    <td>{{taxes.terrain?.mc}}</td>
+    <td>{{taxes.taux?.montant}}</td>
+    <td>
+<button (click)="deleteTaxe(taxes.id)"  class="btn btn-outline-danger me-2">Delete</button>
+<button  class="btn btn-outline-secondary">Update</button>
+    </td>
+  </tr>
+</ng-template>
 </table>

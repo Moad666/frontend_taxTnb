@@ -27,4 +27,8 @@ export class TaxetnbService {
       createTaux(taxetnb : Taxetnb): Observable<Object>{
         return this.httpClient.post(`${this.baseUrl}/save`, taxetnb);
       }
+
+      searchTaxeTnbByProprietaireCin(cin: String): Observable<any> {
+        return this.httpClient.get(`${this.baseUrl}/findByProprietaireCIN/${cin}`);
+      }
 }
