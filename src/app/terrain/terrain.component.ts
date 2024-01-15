@@ -24,7 +24,9 @@ export class TerrainComponent implements OnInit{
   cinToSearch: string = '';
   showAllData: boolean = true;
 
-
+  logout(){
+    this.router.navigate(['']);
+  }
   constructor(private categorieService : CategorieService,private proprietaireService : ProprietaireService,private terrainService : TerrainService, private router : Router){}
 
   searchTerrainByCin(): void {
@@ -95,7 +97,7 @@ export class TerrainComponent implements OnInit{
       const terrainData: Terrain = {
         id: this.terrains.id,
         mc: this.terrains.mc,
-        proprietaire: { id: proprietaireId, nom: '', prenom: '', cin: '', password: '' },
+        proprietaire: { id: proprietaireId, nom: '', prenom: '', cin: '', password: '', username :'' },
         categorie: { id: categoryId, type: '' },
       };
       this.terrainService.createTerrain(terrainData).subscribe(

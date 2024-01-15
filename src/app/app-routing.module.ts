@@ -9,8 +9,12 @@ import { UpdateTerrainComponent } from './update-terrain/update-terrain.componen
 import { TauxComponent } from './taux/taux.component';
 import { UpdateTauxComponent } from './update-taux/update-taux.component';
 import { TaxetnbComponent } from './taxetnb/taxetnb.component';
+import { AuthentifComponent } from './authentif/authentif.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  {path : "", component: AuthentifComponent },
+  {path : "home", component: AppComponent },
   {path : "categorie", component : CategorieComponent},
   {path : "proprietaire", component : ProprietaireComponent},
   {path : "terrain", component : TerrainComponent},

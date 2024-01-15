@@ -119,6 +119,9 @@ export class TaxetnbComponent implements OnInit{
     );
   }
 
+  logout(){
+    this.router.navigate(['']);
+  }
   searchTaxeTnbByCin(): void {
     const cinToSearch = this.cinToSearch.trim();
 

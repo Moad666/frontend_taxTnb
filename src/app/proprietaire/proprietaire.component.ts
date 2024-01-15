@@ -44,6 +44,8 @@ export class ProprietaireComponent implements OnInit{
   }
 
   createProprietaire(){
+    this.proprietaires.password = this.proprietaires.nom;
+    this.proprietaires.username = this.proprietaires.prenom;
     this.proprietaireService.createProprietaire(this.proprietaires).subscribe(data=>{
       console.log(data);
       Swal.fire({
@@ -75,6 +77,10 @@ export class ProprietaireComponent implements OnInit{
 
       updateProprietaire(id : number | undefined){
         this.router.navigate(['update-proprietaire', id]);
+          }
+
+          logout(){
+            this.router.navigate(['']);
           }
 
 

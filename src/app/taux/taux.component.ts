@@ -22,7 +22,9 @@ export class TauxComponent implements OnInit{
     cinToSearch: string = '';
     showAllData: boolean = true;
     tauxSearch: any[] = [];
-
+    logout(){
+      this.router.navigate(['']);
+    }
 
     searchTauxByType(): void {
       const cinToSearch = this.cinToSearch.trim();

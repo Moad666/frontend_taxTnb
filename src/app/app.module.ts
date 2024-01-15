@@ -14,6 +14,7 @@ import { UpdateTerrainComponent } from './update-terrain/update-terrain.componen
 import { TauxComponent } from './taux/taux.component';
 import { UpdateTauxComponent } from './update-taux/update-taux.component';
 import { TaxetnbComponent } from './taxetnb/taxetnb.component';
+import { AuthentifComponent } from './authentif/authentif.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TaxetnbComponent } from './taxetnb/taxetnb.component';
     TauxComponent,
     UpdateTauxComponent,
     TaxetnbComponent,
+    AuthentifComponent,
 
   ],
   imports: [

@@ -24,6 +24,9 @@ export class CategorieComponent implements OnInit{
 
     });
   }
+  logout(){
+    this.router.navigate(['']);
+  }
   createCategorie(){
     this.categorieService.createCategorie(this.categories).subscribe(data=>{
       Swal.fire({

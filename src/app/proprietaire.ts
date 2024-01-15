@@ -4,4 +4,5 @@ export class Proprietaire {
   prenom : String | undefined;
   cin : String | undefined;
   password : String | undefined;
+  username : String | undefined;
 }
